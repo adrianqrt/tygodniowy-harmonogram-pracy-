@@ -9,25 +9,35 @@
 </head>
 
 <body>
-
+<form action="">
+	<select name="sortowanie">
+		<option>Pierwszą możliwość</option>
+		<option>Druga możliwość</option>
+		...
+	</select>
+</form>
 <?php
 $conn = new mysqli ("localhost", "root", "", "tygodniowy-harmonogram-pracy") or die("błąd");
 
 $wynik = $conn->query("SELECT * FROM harmonogram");
 
      if($wynik->num_rows > 0) {
-
+        echo "<table>";
+        echo "<tr>";
+        echo "<th> imie  </th>";
+        echo "<th> nazwisko </th>";
+        echo "<th> godzina rozpoczęcia </th>";
+        echo "<th> godzina zakonczenia </th>";
+        echo "<th> data </th>";
+        echo "<th> dzien tygodnia </th>";
+        echo "</tr>";
+             
     while($wiersz = $wynik-> fetch_assoc() ) 
     {
-        echo "<table>";
+        
 
 //////////////////////////////////////////////////////////
-echo "<th> imie </th>";
-echo "<th> nazwisko </th>";
-echo "<th> godzina rozpoczęcia </th>";
-echo "<th> godzina zakonczenia </th>";
-echo "<th> data </th>";
-echo "<th> dzien tygodnia </th>";
+
 echo "<tr>";
         
         echo "<td>" . $wiersz["imie"] . ";<br>"; 

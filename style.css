@@ -1,6 +1,7 @@
 ﻿
 table, tr, td {
     border: solid blueviolet 3px;
+    padding: 5px;
     
   }
   body{
