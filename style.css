@@ -1,4 +1,8 @@
-﻿body
-{
-
-}
+﻿
+table, tr, td {
+    border: solid blueviolet 3px;
+    
+  }
+  body{
+    background-color: rgb(178, 178, 201);
+  }

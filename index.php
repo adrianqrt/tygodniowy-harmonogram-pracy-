@@ -1,11 +1,4 @@
-<?php
-$servername = "localhost";
-$username = "";
-$password = "";
 
-$conn = mysqli_connect($servername, $username, $password);
-if ($conn) echo "Połączono z bazą danych<br />";
-?>
 <!DOCTYPE html>
 
 <html lang="PL" >
@@ -16,43 +9,58 @@ if ($conn) echo "Połączono z bazą danych<br />";
 </head>
 
 <body>
-<form action="" method="post">
-imie: <br>
-<input type="text" name="imie"><br>
-nazwisko: <br>
-<input type="text" name="nazwisko"><br>
-<input type="submit">
-<br>
-</form>
-
 
 <?php
-    $query = mysql_query('SELECT * FROM tabela') or die();
-while ($rec = mysql_fetch_array($query))
-{
- echo '<tr>
- <td>'.$rec['data'].'</td>
- <td>'.$rec['znak'].'</td>
- <td>'.$rec['qth'].'</td>
- <td>'.$rec['czestotliwosc'].'</td>
- <td>'.$rec['uwagi'].'</td>
- </tr>';
+$conn = new mysqli ("localhost", "root", "", "tygodniowy-harmonogram-pracy") or die("błąd");
+
+$wynik = $conn->query("SELECT * FROM harmonogram");
+
+     if($wynik->num_rows > 0) {
+
+    while($wiersz = $wynik-> fetch_assoc() ) 
+    {
+        echo "<table>";
+
+//////////////////////////////////////////////////////////
+echo "<th> imie </th>";
+echo "<th> nazwisko </th>";
+echo "<th> godzina rozpoczęcia </th>";
+echo "<th> godzina zakonczenia </th>";
+echo "<th> data </th>";
+echo "<th> dzien tygodnia </th>";
+echo "<tr>";
+        
+        echo "<td>" . $wiersz["imie"] . ";<br>"; 
+
+        echo "<td>" . $wiersz["nazwisko"] . ";<br>";
+
+        echo "<td>" . $wiersz["godzina"] . ";<br>";
+
+        echo "<td>" . $wiersz["godzina_"] . ";<br>";
+
+        echo "<td>" . $wiersz["data"] . ";<br>";
+
+        echo "<td>" . $wiersz["dzien_tygodnia"] . ";<br>";
+        
+        echo "</tr>";
+    }
+
+    echo "</table>";
 }
+else {echo "baza jest pusta";}
+
+
+
+
+
+$conn->close();
 ?>
-    <table class="tabela">
-        <tr>
-           <td>imie</td> <td>nazwisko</td> <td>godzina</td> <td>czynność</td>
-        </tr>
-        <tr>
-            <td>imie</td> <td>nazwisko</td> <td>godzina</td> <td>czynność</td>
-        </tr>
-        <tr>
-            <td>imie</td> <td>nazwisko</td> <td>godzina</td> <td>czynność</td>
-        </tr>
-     </table>
+
+
+
+
+
+
+
 </body>
 </html>
-<?php
-
-mysqli_close($conn);
-?>
