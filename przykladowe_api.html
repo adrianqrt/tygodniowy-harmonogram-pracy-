@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    
+    
+    <title>XML API</title>
+    <script>
+      let request = new XMLHttpRequest();
+      request.open("GET", "https://jsonplaceholder.typicode.com/users");
+      request.send();
+      request.onload = () => {
+        console.log(request);
+		///jak jest 200 to jest ok
+        if (request.status === 200) {
+         
+		  document.getElementById('a').innerHTML=request.response;
+        } else {
+			document.getElementById('a').innerHTML=blad ;
+        }
+      };
+    </script>
+  </head>
+
+  <body>
+	<div id="a"></div>
+  </body>
+</html>
