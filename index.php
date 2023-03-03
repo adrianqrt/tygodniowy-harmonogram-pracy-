@@ -1,72 +1,68 @@
-
-<!DOCTYPE html>
-
-<html lang="PL" >
-<head>
-    <meta charset="utf-8" />
-    <title>Tygodniowy-Harmonogram-Pracy</title>
-    <link rel="stylesheet" href="style1.css">
-</head>
-
-<body>
-
 <?php
-$conn = new mysqli ("localhost", "root", "", "tygodniowy-harmonogram-pracy") or die("błąd");
 
-$wynik = $conn->query("SELECT * FROM harmonogram order by harmonogram.data asc");
-
-     if($wynik->num_rows > 0) {
-        echo "<center>";
-        echo "<table>";
-        echo "<tr>";
-        echo "<th> imie  </th>";
-        echo "<th> nazwisko </th>";
-        echo "<th> godzina rozpoczęcia </th>";
-        echo "<th> godzina zakonczenia </th>";
-        echo "<th> data </th>";
-        echo "<th> dzien tygodnia </th>";
-        echo "</tr>";
-             
-    while($wiersz = $wynik-> fetch_assoc() ) 
-    {
-        
-
-//////////////////////////////////////////////////////////
-
-echo "<tr>";
-        
-        echo "<td>" . $wiersz["imie"] . ";<br>"; 
-
-        echo "<td>" . $wiersz["nazwisko"] . ";<br>";
-
-        echo "<td>" . $wiersz["godzina"] . ";<br>";
-
-        echo "<td>" . $wiersz["godzina_"] . ";<br>";
-
-        echo "<td>" . $wiersz["data"] . ";<br>";
-
-        echo "<td>" . $wiersz["dzien_tygodnia"] . ";<br>";
-        
-        echo "</tr>";
-    }
-
-    echo "</table>";
-    echo "</center>";
+if(isset($_POST['search']))
+{
+    $valueToSearch = $_POST['valueToSearch'];
+    // search in all table columns
+    // using concat mysql function
+    $query = ("SELECT * FROM `harmonogram` WHERE CONCAT(`imie`, `nazwisko`, `godzina`, `godzina_`, `data`, `dzien_tygodnia`) LIKE '%".$valueToSearch."%'  order by harmonogram.data asc");
+    
 }
-else {echo "baza jest pusta";}
+ else {
+    $query = "SELECT * FROM `harmonogram`";
+   
+}
 
+// function to connect and execute the query
+function filterTable($query)
+{
+    $connect = mysqli_connect("localhost", "root", "", "harmonogram");
+    $filter_Result = mysqli_query($connect, $query);
+    return $filter_Result;
+}
 
-
-
-
-$conn->close();
 ?>
 
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PHP HTML TABLE DATA SEARCH</title>
+        <style>
+            table,tr,th,td
+            {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <form action="" method="post">
+            <input type="text" name="valueToSearch" placeholder="Value To Search"><br><br>
+            <input type="submit" name="search" value="Filter"><br><br>
+            
+            <table>
+                <tr>
+                    <th>imie</th>
+                    <th>nazwisko</th>
+                    <th>godzina rozpoczecia</th>
+                    <th>godzina zakonczenia</th>
+                    <th>data</th>
+                    <th>dzien tygodnia</th>
+                </tr>
 
-
-
-
-
-
-</body>
+      <!-- populate table from mysql database -->
+                <?php while($row =mysql_fetch($query)):?>
+                <tr>
+                    <td><?php echo $row['imie'];?></td>
+                    <td><?php echo $row['nazwisko'];?></td>
+                    <td><?php echo $row['godzina'];?></td>
+                    <td><?php echo $row['godzina_'];?></td>
+                    <td><?php echo $row['data'];?></td>
+                    <td><?php echo $row['dzien_tygodnia'];?></td>
+                </tr>
+                <?php endwhile;?>
+            </table>
+        </form>
+        
+    </body>
 </html>
