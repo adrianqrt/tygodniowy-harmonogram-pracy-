@@ -5,23 +5,18 @@
 <head>
     <meta charset="utf-8" />
     <title>Tygodniowy-Harmonogram-Pracy</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
 </head>
 
 <body>
-<form action="">
-	<select name="sortowanie">
-		<option>Pierwszą możliwość</option>
-		<option>Druga możliwość</option>
-		...
-	</select>
-</form>
+
 <?php
 $conn = new mysqli ("localhost", "root", "", "tygodniowy-harmonogram-pracy") or die("błąd");
 
-$wynik = $conn->query("SELECT * FROM harmonogram");
+$wynik = $conn->query("SELECT * FROM harmonogram order by harmonogram.data asc");
 
      if($wynik->num_rows > 0) {
+        echo "<center>";
         echo "<table>";
         echo "<tr>";
         echo "<th> imie  </th>";
@@ -56,6 +51,7 @@ echo "<tr>";
     }
 
     echo "</table>";
+    echo "</center>";
 }
 else {echo "baza jest pusta";}
 

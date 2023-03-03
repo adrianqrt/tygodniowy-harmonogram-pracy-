@@ -1,0 +1,21 @@
+﻿
+table, tr, td {
+  border: solid blueviolet 3px;
+  padding: 5px;
+  
+  
+}
+body{
+  background-color: rgb(178, 178, 201);
+}
+
+
+
+.grid-wrapper {
+	display: grid;
+	grid-template-columns: 100px auto 100px;
+	grid-template-rows: 50px 250px 50px;
+	grid-template-areas: "head head head"
+			"right-side main left-side"
+			"logo footer footer";
+}
