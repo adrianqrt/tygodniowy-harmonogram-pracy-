@@ -10,7 +10,14 @@
 
 <body>
 
+<div id=a>
+<script src="skrypty.js"></script><br>
+
+</div>
+
+
 <?php
+
 $conn = new mysqli ("localhost", "root", "", "tygodniowy-harmonogram-pracy") or die("błąd");
 
 $wynik = $conn->query("SELECT * FROM harmonogram order by harmonogram.data asc");
