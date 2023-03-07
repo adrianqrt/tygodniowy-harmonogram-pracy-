@@ -3,17 +3,34 @@
 
 /*telefon*/
 @media  (max-width: 768px) {
-  table, tr, td {
-    border: solid blue 5px;
+   tr, td, th {
+    border: solid rgb(128, 146, 226) 5px;
+    padding: 5px;
+    
+    border-radius: 25%;
+    text-align: center;
+    background-color: rgb(149, 163, 224);
+ 
+  }
+  table{
+    border: solid rgb(128, 146, 226) 15px;
     padding: 15px;
+    border-radius: 25px;
+    width:100%;
+  height:100%
+    
   }
   body{
     background-color: rgb(209, 177, 240);
     font-size: 10px;
-  
+    background-image: linear-gradient( blue 10%, cyan 40%, rgb(16, 137, 141));
+    color:white;
 }
+html{
+  width:100%;
+  height:100%}
 #a {
-  border: solid blue 5px;
+  border: solid rgb(128, 146, 226) 5px;
   text-align: center;
   width: 25%;
   height: 25px;
@@ -21,23 +38,38 @@
   margin-bottom: 10px;
   font-size: 10px;
   padding: 10px;
+  border-radius: 25px;
+  background-color: rgb(149, 163, 224);
 
 }
 }
 
 /*laptop*/
 @media  (max-width: 1024px) and (min-width: 769px) {
-  table, tr, td {
-    border: solid rgb(206, 121, 10) 20px;
-    padding: 10px;
+   tr, td, th {
+    border: solid rgb(128, 146, 226) 7px;
+    padding: 5px;
+    border-radius: 25%;
+    
+    text-align: center;
+    background-color: rgb(149, 163, 224);
+  }
+  table{
+    border: solid rgb(128, 146, 226) 15px;
+    padding: 15px;
+    border-radius: 25px;
   }
   body{
     background-color: rgb(209, 177, 240);
     font-size: 10px;
-    
+    background-image: linear-gradient( blue 10%, cyan 40%, rgb(16, 137, 141));
+    color:white;
 }
+html{
+  width:100%;
+  height:100%}
 #a {
-  border: solid rgb(206, 121, 10) 5px;
+  border: solid rgb(128, 146, 226) 5px;
   text-align: center;
   width: 25%;
   height: 50px;
@@ -45,21 +77,40 @@
   margin-bottom: 10px;
   font-size: 25px;
   padding: 10px;
+  border-radius: 25px;
+  background-color: rgb(149, 163, 224);
+
 }
 }
 /*pc*/
 @media (min-width: 1025px) {
-  table, tr, td {
-    border: solid blueviolet 20px;
+   tr, td, th {
+    border: solid rgb(128, 146, 226) 10px;
     padding: 15px;
+    
+    background-color: rgb(149, 163, 224);
+    border-radius: 25%;
+    text-align: center;
+  }
+  table{
+    border: solid rgb(128, 146, 226) 15px;
+    padding: 15px;
+    border-radius: 25px;
   }
   body{
-    background-color: rgb(209, 177, 240);
+    
     font-size: 20px;
+    background-image: linear-gradient( blue 10%, cyan 40%, rgb(16, 137, 141));
+color:white;
+
+  }
+html{
+  width:100%;
+  height:100%
   
 }
 #a {
-  border: solid blueviolet 5px;
+  border: solid rgb(128, 146, 226) 5px;
   text-align: center;
   width: 25%;
   height: 50px;
@@ -67,7 +118,8 @@
   margin-bottom: 10px;
   font-size: 30px;
   padding: 10px;
-
+  border-radius: 25px;
+  background-color: rgb(149, 163, 224);
 }
 }
 
