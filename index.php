@@ -11,7 +11,9 @@
 <body>
 
 <div id=a>
+
 <script src="skrypty.js"></script><br>
+
 
 </div>
 
@@ -20,9 +22,10 @@
 
 $conn = new mysqli ("localhost", "root", "", "tygodniowy-harmonogram-pracy") or die("błąd");
 
-$wynik = $conn->query("SELECT * FROM harmonogram order by harmonogram.data asc");
+$wynik = $conn->query("SELECT * FROM harmonogram order by harmonogram.data asc ");
 
-     if($wynik->num_rows > 0) {
+    
+        
         echo "<center>";
         echo "<table>";
         echo "<tr>";
@@ -59,8 +62,6 @@ echo "<tr>";
 
     echo "</table>";
     echo "</center>";
-}
-else {echo "baza jest pusta";}
 
 
 
